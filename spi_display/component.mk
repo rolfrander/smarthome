@@ -1,6 +1,7 @@
 ## Application Component configuration
 ## Parameters configured here will override default and ENV values
 ## Uncomment and change examples:
+# test
 
 ## Add your source directories here separated by space
 # COMPONENT_SRCDIRS := app
