@@ -6,5 +6,6 @@
     ],
     "remoteEnv": {
         "PATH": "${containerEnv:PATH}:/opt/windows/System32/WindowsPowerShell/v1.0/"
-    }
+    },
+    "runArgs": [ "--privileged" ]
 }
