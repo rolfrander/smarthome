@@ -1,0 +1,14 @@
+{
+    "folders": [
+        {"path": "spi_display"},
+        {"path": "test_rotary"}
+    ],
+    "settings": {
+        "files.associations": {
+            "*.hw": "jsonc",
+            "*.fwfs": "jsonc",
+            "optional": "cpp"
+        },
+        "json.schemas": []
+    }
+}
