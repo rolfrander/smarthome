@@ -1,8 +1,7 @@
 {
     "folders": [
-        {
-            "path": "."
-        }
+        {"path": "spi_display"},
+        {"path": "test_rotary"}
     ],
     "settings": {
         "files.associations": {
