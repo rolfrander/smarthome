@@ -3,8 +3,5 @@
     "extensions": ["ms-vscode.cpptools"],
     "mounts": [
         "source=${localEnv:SystemRoot},target=/opt/windows,type=bind"
-    ],
-    "remoteEnv": {
-        "PATH": "${containerEnv:PATH}:/opt/windows/System32/WindowsPowerShell/v1.0/"
-    }
+    ]
 }
