@@ -4,7 +4,7 @@
     "mounts": [
         "source=${localEnv:SystemRoot},target=/opt/windows,type=bind"
     ],
-    "containerEnv": {
+    "remoteEnv": {
         "PATH": "${containerEnv:PATH}:/opt/windows/System32/WindowsPowerShell/v1.0/"
     }
 }
