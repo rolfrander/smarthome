@@ -1,7 +1,4 @@
 {
     "build": {"dockerfile": "Dockerfile"},
-    "extensions": ["ms-vscode.cpptools"],
-    "mounts": [
-        "source=${localEnv:SystemRoot},target=/opt/windows,type=bind"
-    ]
+    "extensions": ["ms-vscode.cpptools"]
 }
