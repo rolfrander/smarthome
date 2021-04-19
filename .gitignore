@@ -1,3 +1,4 @@
 test_rotary/sming.code-workspace
 .vscode
 out/
+esp_init_data_default.bin
