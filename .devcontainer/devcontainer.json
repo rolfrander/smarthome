@@ -1,12 +1,5 @@
 {
     "build": {"dockerfile": "Dockerfile"},
     "extensions": ["ms-vscode.cpptools"],
-    "mounts": [
-        "source=/mnt/c/Windows,target=/opt/windows,type=bind,ro=true",
-        "source=/run/WSL/,target=/run/WSL,type=bind,ro=true"
-    ],
-    "remoteEnv": {
-        "WSL_INTEROP": "${localEnv:WSL_INTEROP}",
-        "PATH": "${containerEnv:PATH}:/opt/windows/System32/WindowsPowerShell/v1.0/"
-    }
+    "containerUser": "rolfn"
 }
