@@ -1,4 +1,12 @@
 
+flash: .flashed
+	powershell.exe -c 'python -m serial.tools.miniterm COM3 115200'
 
-wsl-flash:
+out/Esp8266/debug/firmware/rom0.bin:
+	# dummy
+
+# only flash if rom-file is changed since last flash
+.flashed: out/Esp8266/debug/firmware/rom0.bin
 	powershell.exe -c 'python -m esptool -p COM3 -b 115200 --chip esp8266 --before default_reset --after hard_reset write_flash -z -fs 1MB -ff 40m -fm dio 0x00000 out/Esp8266/debug/firmware/rboot.bin 0x000fa000 out/Esp8266/debug/firmware/partitions.bin 0x00002000 out/Esp8266/debug/firmware/rom0.bin  0x000fc000 ../esp_init_data_default.bin '
+	touch .flashed
+

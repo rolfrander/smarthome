@@ -6,48 +6,66 @@ uint8_t gpio = 2;
 
 uint8_t next[] {
 	4, // 0
-	0, // 1
+  255, // 1
 	0, // 2
-	0, // 3
+  255, // 3
 	5, // 4
-	16,// 5
-	0, // 6
-	0, // 7
-	0, // 8
-	0, // 9
-	0, // 10
-	0, // 11
-	0, // 12
-	0, // 13
-	0, // 14
-	0, // 15
+   16, // 5
+  255, // 6
+  255, // 7
+  255, // 8
+  255, // 9
+  255, // 10
+  255, // 11
+  255, // 12
+  255, // 13
+  255, // 14
+  255, // 15
 	2, // 16
 };
 
-void blink()
+void gpio_shift()
 {
 	digitalWrite(gpio, state);
 
 	if(state) {
-		Serial.printf("gpio %2d on\n", gpio);
-	} else {
-		Serial.printf("gpio %2d off\n", gpio);
 		gpio = next[gpio];
 	}
 	state = !state;
 }
 
-void init()
+void gpio_init()
 {
-    WifiAccessPoint.enable(false);
-
 	Serial.begin(115200);
-	// Serial.begin(SERIAL_BAUD_RATE); // 115200 by default
 	Serial.systemDebugOutput(true); // Allow debug output to serial
-
+	Serial.println("init pins for output");
 	for(int i=0; i<=16; i++) {
-		pinMode(i, OUTPUT);
+		if(next[i] < 17) {
+			pinMode(next[i], OUTPUT);
+		}
 	}
 	gpio = 2;
+	Serial.println("start timer");
+	procTimer.initializeMs(100, gpio_shift).start();
+	Serial.println("init done!");
+}
+
+
+#define LED_PIN 2 // GPIO2
+
+void blink()
+{
+	digitalWrite(LED_PIN, state);
+	state = !state;
+}
+
+void blink_init()
+{
+	pinMode(LED_PIN, OUTPUT);
 	procTimer.initializeMs(1000, blink).start();
+}
+
+void init() {
+	WifiAccessPoint.enable(false);
+	gpio_init();
 }
