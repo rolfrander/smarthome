@@ -3,3 +3,4 @@ test_rotary/sming.code-workspace
 out/
 esp_init_data_default.bin
 test_gpio/.flashed
+spi_display/.flashed
