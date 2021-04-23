@@ -96,22 +96,21 @@ void testsequence()
     r1.device = &screen;
     //r1.out.clear();
     r1.setCommand(0xc, 8);
-    //r1.out.set8(0x0);
+    //r1.out.set8(0xc);
     r1.in.clear();
-    print_request("Request 1", r1);
+    print_request("*** Request 1", r1);
     digitalWrite(PIN_DC, 0);
     screen.execute(r1);
-    print_request("Request 1 done", r1);
+    print_request("*** Request 1 done", r1);
 
     //r2.setCommand(0xd3, 8);
-    r2.setCommand(0, 0);
+    r2.device = &screen;
     r2.in.set32(0x0, 4);
-    r2.out.clear();
     r2.callback = request_complete;
-    print_request("Request 2", r2);
+    print_request("*** Request 2", r2);
     digitalWrite(PIN_DC, 0);
     screen.execute(r2);
-    print_request("Request 2 done", r2);
+    print_request("*** Request 2 done", r2);
 }
 
 void init() {
@@ -120,5 +119,5 @@ void init() {
 	Serial.systemDebugOutput(true); // Allow debug output to serial
 
     WifiAccessPoint.enable(false);
-    procTimer.initializeMs(5000, testsequence).start();
+    procTimer.initializeMs(500, testsequence).startOnce();
 }
